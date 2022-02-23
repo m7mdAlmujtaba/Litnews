@@ -72,10 +72,14 @@
                                                 {{$post->created_at}}
                                             </td>
                                             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                Category Name
+                                            </td>
+                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                                 @if($post->status == 0)
                                                 <i class="fas fa-circle text-orange-500 mr-2"></i>
                                                 Draft
                                                 @else
+                                                <i class="fas fa-circle text-indigo-600 mr-2"></i>
                                                 Published
                                                 @endif
                                             </td>
@@ -83,14 +87,13 @@
                                             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                             </td>
                                             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                                                <a href="" class="text-blueGray-500 block py-1 px-3" onclick="openDropdown(event,'table-light-1-dropdown')">
+                                                <a href="#" class="text-blueGray-500 block py-1 px-3" onclick="openDropdown(event,'table-light-1-dropdown')">
                                                     <i class="fas fa-ellipsis-v"></i>
                                                 </a>
                                                 <div class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48" id="table-light-1-dropdown">
                                                     <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Edit</a>
                                                     <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Trash</a>
                                                     <div class="h-0 my-2 border border-solid border-blueGray-100"></div>
-
                                                 </div>
                                             </td>
                                         </tr>

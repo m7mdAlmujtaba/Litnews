@@ -93,7 +93,7 @@ class PostController extends Controller
     public function show(Post $id)
     {
         $post = Post::findOrFail($id);
-        return view('dashboard.post.show', ['post' => $post]);
+        return view('dashboard.posts.show', ['post' => $post]);
     }
 
     /**
@@ -105,7 +105,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        return view('dashboard.post.edit', ['post' => $post]);
+        return view('dashboard.posts.edit', ['post' => $post]);
     }
 
     /**

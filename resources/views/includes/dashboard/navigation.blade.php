@@ -91,8 +91,8 @@
 
           <ul class="md:flex-col md:min-w-full flex flex-col list-none">
             <li class="items-center">
-              <a href="./dashboard.html"
-                class="text-xs  py-2 font-bold block text-pink-500 hover:text-pink-600">
+              <a href="{{ route('dashboard.home')}}"
+                class="text-xs  py-2 font-bold block  {{ Request::is('dashboard') ? 'text-pink-500 hover:text-pink-600' : 'text-blueGray-700 hover:text-blueGray-500'}} ">
                 <i class="fas fa-tv mr-2 text-sm opacity-75"></i>
                 Dashboard
               </a>
@@ -100,8 +100,8 @@
 
             <li class="items-center">
               <a href="./settings.html"
-                class="text-xs  py-2 font-bold block text-blueGray-700 hover:text-blueGray-500">
-                <i class="fas fa-tools mr-2 text-sm text-blueGray-300"></i>
+                class="text-xs  py-2 font-bold block  {{ Request::is('settings') ? 'text-pink-500 hover:text-pink-600' : 'text-blueGray-700 hover:text-blueGray-500'}}">
+                <i class="fas fa-tools mr-2 text-sm "></i>
                 Settings
               </a>
             </li>
@@ -116,17 +116,17 @@
           <!-- Navigation -->
           <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
             <li class="items-center">
-              <a href="../profile.html"
-                class="text-blueGray-700 hover:text-blueGray-500 text-xs  py-2 font-bold block">
-                <i class="fas fa-user text-blueGray-300 mr-2 text-sm"></i>
+              <a href="{{ route('dashboard.posts')}}"
+                class=" {{ Request::is('dashboard/posts') ? 'text-pink-500 hover:text-pink-600' : 'text-blueGray-700 hover:text-blueGray-500'}} text-xs  py-2 font-bold block">
+                <i class="fas fa-newspaper mr-2 text-sm"></i>
                 Posts
               </a>
             </li>
 
             <li class="items-center">
               <a href="../profile.html"
-                class="text-blueGray-700 hover:text-blueGray-500 text-xs  py-2 font-bold block">
-                <i class="fas fa-users text-blueGray-300 mr-2 text-sm"></i>
+                class=" {{ Request::is('dashboard.categories') ? 'text-pink-500 hover:text-pink-600' : 'text-blueGray-700 hover:text-blueGray-500'}} text-xs  py-2 font-bold block">
+                <i class="fas fa-th-large  mr-2 text-sm"></i>
                 Categories 
               </a>
             </li>
@@ -134,7 +134,7 @@
             <li class="items-center">
               <a href="../profile.html"
                 class="text-blueGray-700 hover:text-blueGray-500 text-xs  py-2 font-bold block">
-                <i class="fas fa-users text-blueGray-300 mr-2 text-sm"></i>
+                <i class="fas fa-users  mr-2 text-sm"></i>
                 Tags 
               </a>
             </li>
@@ -142,7 +142,7 @@
             <li class="items-center">
               <a href="../profile.html"
                 class="text-blueGray-700 hover:text-blueGray-500 text-xs  py-2 font-bold block">
-                <i class="fas fa-user-circle text-blueGray-300 mr-2 text-sm"></i>
+                <i class="fas fa-user-circle  mr-2 text-sm"></i>
                 Comments
               </a>
             </li>
@@ -159,7 +159,7 @@
             <li class="items-center">
               <a href="../profile.html"
                 class="text-blueGray-700 hover:text-blueGray-500 text-xs  py-2 font-bold block">
-                <i class="fas fa-user text-blueGray-300 mr-2 text-sm"></i>
+                <i class="fas fa-user  mr-2 text-sm"></i>
                 Users
               </a>
             </li>
@@ -167,7 +167,7 @@
             <li class="items-center">
               <a href="../profile.html"
                 class="text-blueGray-700 hover:text-blueGray-500 text-xs  py-2 font-bold block">
-                <i class="fas fa-users text-blueGray-300 mr-2 text-sm"></i>
+                <i class="fas fa-users  mr-2 text-sm"></i>
                 Subscribers 
               </a>
             </li>
@@ -175,7 +175,7 @@
             <li class="items-center">
               <a href="../profile.html"
                 class="text-blueGray-700 hover:text-blueGray-500 text-xs  py-2 font-bold block">
-                <i class="fas fa-user-circle text-blueGray-300 mr-2 text-sm"></i>
+                <i class="fas fa-user-circle  mr-2 text-sm"></i>
                 Profile
               </a>
             </li>
