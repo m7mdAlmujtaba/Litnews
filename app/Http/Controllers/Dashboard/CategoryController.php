@@ -24,16 +24,6 @@ class CategoryController extends Controller
         ]);
     }
 
-         /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('dashboard.categories.create');
-    }
-
      /**
      * Store a newly created resource in storage.
      *
@@ -61,7 +51,8 @@ class CategoryController extends Controller
             return back()->withInput()->with('error', $error);
         } else {
             $category->save();
-            $redirect_url = 'dashboard/category/'.$category->id.'/edit';
+            $message = 'The Category has been add!';
+            $redirect_url = 'dashboard/categories';
             return redirect($redirect_url)->with('message', $message);
         }
 

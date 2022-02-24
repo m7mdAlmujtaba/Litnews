@@ -64,8 +64,9 @@
                 </div>
                 <div class="block w-full overflow-x-auto">
                     <!-- Projects table -->
-                    <form role="form" method="POST" action="{{ route('dashboard.post.store') }}" enctype="multipart/form-data">
+                    <form role="form" method="POST" action="{{ route('dashboard.post.update', $post->id) }}" enctype="multipart/form-data">
                         @csrf
+                        {{ method_field('PUT') }}
                         <div class="flex flex-wrap">
                             <div class="w-full lg:w-6/12 px-4">
                                 <div class="relative w-full mb-3">
@@ -89,14 +90,25 @@
                                 </div>
                             </div>
 
-                            <div class="w-full lg:w-12/12 px-4">
+                            <div class="w-full lg:w-8/12 px-4">
                                 <div class="relative w-full mb-3">
                                     <label class="block text-blueGray-600 font-bold mb-2" htmlFor="grid-password">
                                         Post Content
                                     </label>
                                     <textarea type="textarea" name="body" class="border-0 px-3 py-3 text-blueGray-600
-                                                 bg-white rounded shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">{{$post->body}}</textarea>
+                                                 bg-white rounded shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">{{$post->body}} </textarea>
                                 </div>
+                            </div>
+                            <div class="w-full lg:w-4/12 px-4">
+                            <label class="block text-blueGray-600 font-bold mb-2" htmlFor="grid-password">
+                                        Category
+                                    </label>
+                                <select id="categories" name="category" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600
+                                                 bg-white rounded shadow focus:outline-none focus:ring w-full ease-linear transition-all">
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}" class="px-3 py-3" {{$category->id == $post->category_id? "selected":""}} >{{$category->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="px-4">
                                 <div class="form-check">

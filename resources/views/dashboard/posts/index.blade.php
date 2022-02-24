@@ -71,8 +71,8 @@
                                     {{$post->created_at}}
                                 </td>
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                {{$post->category? $post->category->name : "Uncategorized"}}
-                                    
+                                    {{$post->category? $post->category->name : "Uncategorized"}}
+
                                 </td>
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                     @if($post->status == 0)
@@ -91,9 +91,19 @@
                                         <i class="fas fa-ellipsis-v"></i>
                                     </a>
                                     <div class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48" id="table-light-1-dropdown">
-                                        <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Edit</a>
-                                        <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Trash</a>
-                                        <div class="h-0 my-2 border border-solid border-blueGray-100"></div>
+                                        <a href="{{ route('dashboard.post.edit', $post->id)}}">
+                                            <button class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">
+                                                Edit
+                                            </button>
+                                        </a>
+                                        <form action="{{ route('dashboard.post.delete', $post->id) }}" method="POST">
+                                            @csrf
+                                            {{method_field('DELETE')}}
+                                            <button type="submit" class="btn btn-danger  text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">
+                                                Trash
+                                            </button>
+                                        </form>
+
                                     </div>
                                 </td>
                             </tr>

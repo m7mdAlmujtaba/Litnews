@@ -108,7 +108,8 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        return view('dashboard.posts.edit', ['post' => $post]);
+        $categories = Category::All();
+        return view('dashboard.posts.edit', ['post' => $post, 'categories'=>$categories]);
     }
 
     /**
@@ -144,27 +145,9 @@ class PostController extends Controller
             $slug = $post->slug;
         }
 
-        if (isset($request->image)) {
-            $file_name = $request->image->getClientOriginalExtension();
-            $imageName = $slug . '-' . uniqid() . Carbon::now()->timestamp . '.' . $file_name;
-            // #1 check if category image directory is exists
-            if (!Storage::disk('public')->exists('media')) {
-                Storage::disk('public')->makeDirectory('media');
-            }
-            // DELETE old image
-            if (Storage::disk('public')->exists('media/' . $post->image)) {
-                Storage::disk('public')->delete('media/' . $post->image);
-            }
-
-            //Storage::disk('public')->put($img_path, $image);
-            $request->image->storeAs('media', $imageName, 'public');
-        } else {
-            $imageName = $post->image;
-        }
-
         $post->title = $request->title;
         $post->slug = $slug;
-        $post->image = $imageName;
+        $post->category_id = $request->category;
         $post->body = $request->body;
 
         if (request('status')) {
@@ -178,6 +161,10 @@ class PostController extends Controller
             return back()->withInput()->with('error', $error);
         } else {
             $post->update();
+            if (isset($request->image)) {
+                $file = $request->image;
+                $post->addMedia($file)->toMediaCollection();
+            }
             $message = 'The post has been updated!';
             return back()->with('message', $message);
         }

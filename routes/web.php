@@ -38,7 +38,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard',  'as' => 'dashboa
     Route::delete('/post/{id}/delete', [PostController::class, 'destroy'])->name('post.delete');
     // Category routes
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
-    Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
     Route::get('/category/{id}', [CategoryController::class, 'show']);
     Route::get('/category/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');

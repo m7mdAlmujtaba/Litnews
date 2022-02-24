@@ -124,8 +124,8 @@
             </li>
 
             <li class="items-center">
-              <a href="../profile.html"
-                class=" {{ Request::is('dashboard.categories') ? 'text-pink-500 hover:text-pink-600' : 'text-blueGray-700 hover:text-blueGray-500'}} text-xs  py-2 font-bold block">
+              <a href="{{ route('dashboard.categories')}}"
+                class=" {{ Request::is('dashboard/categories') ? 'text-pink-500 hover:text-pink-600' : 'text-blueGray-700 hover:text-blueGray-500'}} text-xs  py-2 font-bold block">
                 <i class="fas fa-th-large  mr-2 text-sm"></i>
                 Categories 
               </a>

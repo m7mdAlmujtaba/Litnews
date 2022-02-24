@@ -76,7 +76,7 @@
                                     <label class="block text-blueGray-600 font-bold mb-2" htmlFor="grid-password">
                                         Post Content
                                     </label>
-                                    <textarea type="textarea" name="body" class="border-0 px-3 py-3 text-blueGray-600
+                                    <textarea type="textarea" rows="10" name="body" class="border-0 px-3 py-3 text-blueGray-600
                                                  bg-white rounded shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"> </textarea>
                                 </div>
                             </div>
