@@ -25,4 +25,8 @@ class Post extends Model implements HasMedia
     {
         return Str::limit($this->body, Post::EXCERPT_LENGTH);
     }
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 }

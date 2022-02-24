@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,8 +22,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('user')->orderBy('id', 'DESC')->get();
-        // return $posts;
+        $posts = Post::with('user', 'category')->orderBy('id', 'DESC')->get();
         return view('dashboard.posts.index', [
             'posts' => $posts
         ]);
@@ -35,7 +35,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.posts.create');
+        $categories = Category::All();
+        return view('dashboard.posts.create', ['categories' => $categories]);
     }
 
      /**
@@ -52,7 +53,8 @@ class PostController extends Controller
         $this->validate($request, [
             'title' => 'required|max:255|unique:posts',
             'image' => 'required|mimes:jpg,png,bmp,jpeg',
-            'body' => 'required',
+            'category' => 'required|integer',
+            'body' => 'required'
         ]);
 
         $slug = Str::slug($request->title, '-');
@@ -63,6 +65,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->author = Auth::id();
         $post->slug = $slug;
+        $post->category_id = $request->category;
         $post->body = $request->body;
 
         if (request('status')) {
@@ -87,7 +90,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Dashboard\Post  $post
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
     public function show(Post $id)
@@ -99,7 +102,7 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Dashboard\Post  $post
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -112,7 +115,7 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Dashboard\Post  $post
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -183,7 +186,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Dashboard\Post  $post
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

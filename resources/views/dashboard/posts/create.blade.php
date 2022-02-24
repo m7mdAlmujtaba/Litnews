@@ -71,7 +71,7 @@
                                 </div>
                             </div>
 
-                            <div class="w-full lg:w-12/12 px-4">
+                            <div class="w-full lg:w-8/12 px-4">
                                 <div class="relative w-full mb-3">
                                     <label class="block text-blueGray-600 font-bold mb-2" htmlFor="grid-password">
                                         Post Content
@@ -79,6 +79,17 @@
                                     <textarea type="textarea" name="body" class="border-0 px-3 py-3 text-blueGray-600
                                                  bg-white rounded shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"> </textarea>
                                 </div>
+                            </div>
+                            <div class="w-full lg:w-4/12 px-4">
+                            <label class="block text-blueGray-600 font-bold mb-2" htmlFor="grid-password">
+                                        Category
+                                    </label>
+                                <select id="categories" name="category" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600
+                                                 bg-white rounded shadow focus:outline-none focus:ring w-full ease-linear transition-all">
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}" class="px-3 py-3">{{$category->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="px-4">
                                 <div class="form-check">
@@ -100,8 +111,5 @@
     </div>
     @include('includes/dashboard/footer')
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" charset="utf-8"></script>
-<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
 
 @endsection

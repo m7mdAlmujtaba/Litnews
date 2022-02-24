@@ -130,22 +130,6 @@
                 Categories 
               </a>
             </li>
-
-            <li class="items-center">
-              <a href="../profile.html"
-                class="text-blueGray-700 hover:text-blueGray-500 text-xs  py-2 font-bold block">
-                <i class="fas fa-users  mr-2 text-sm"></i>
-                Tags 
-              </a>
-            </li>
-
-            <li class="items-center">
-              <a href="../profile.html"
-                class="text-blueGray-700 hover:text-blueGray-500 text-xs  py-2 font-bold block">
-                <i class="fas fa-user-circle  mr-2 text-sm"></i>
-                Comments
-              </a>
-            </li>
           </ul>
 
           <!-- Divider -->
